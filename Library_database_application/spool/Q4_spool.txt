@@ -1,0 +1,27 @@
+mysql> 	Select case when m.name='Dummy' then dp.name else m.name end as name, time(sum(timediff(v.out_time,v.In_time))) as hours_stayed
+		from visit as v inner join members as m on m.M_id=v.M_id inner join day_pass as dp on v.Pass_no=dp.Pass_no
+		group by v.M_id, v.Pass_no, m.name, dp.name
+		order by hours_stayed desc;
++--------+--------------+
+| name   | hours_stayed |
++--------+--------------+
+| Name1  | 04:00:00     |
+| Name2  | 04:00:00     |
+| Name3  | 04:00:00     |
+| Name11 | 04:00:00     |
+| Name4  | 02:00:00     |
+| Name6  | 02:00:00     |
+| Name7  | 02:00:00     |
+| Name8  | 02:00:00     |
+| Name10 | 02:00:00     |
+| Name13 | 02:00:00     |
+| name1  | 02:00:00     |
+| name2  | 02:00:00     |
+| name3  | 02:00:00     |
+| name4  | 02:00:00     |
+| name5  | 02:00:00     |
+| name6  | 01:00:00     |
++--------+--------------+
+16 rows in set (0.00 sec)
+
+mysql> notee

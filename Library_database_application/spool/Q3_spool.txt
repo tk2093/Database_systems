@@ -1,0 +1,102 @@
+mysql>  select dense_rank() over (order by YEARWEEK(br.Check_out_date)) as Week_no, bk.Sub_area, bk.author, count(br.Issue_id) as No_Copies
+		from borrows as br inner join books as bk on bk.ISBN=br.ISBN
+		group by YEARWEEK(br.Check_out_date), bk.Sub_area, bk.author
+		order by YEARWEEK(br.Check_out_date), bk.Sub_area;
++---------+---------------+------------------------+-----------+
+| Week_no | Sub_area      | author                 | No_Copies |
++---------+---------------+------------------------+-----------+
+|       1 | chemistry     | Marsha Collier         |         1 |
+|       1 | fiction       | Bill Bryson            |         2 |
+|       1 | fiction       | Douglas Adams          |         1 |
+|       1 | history       | Frank Herbert          |         1 |
+|       1 | history       | Leo Tolstoy            |         1 |
+|       1 | horror        | J.K. Rowling           |         1 |
+|       1 | horror        | John McPhee            |         1 |
+|       1 | non-fiction   | Bill Bryson            |         1 |
+|       1 | non-fiction   | Edward P. Jones        |         2 |
+|       1 | physics       | J.K. Rowling           |         1 |
+|       1 | Sci-fi        | Ruby Ann Boxcar        |         1 |
+|       1 | Sci-fi        | Gary Russell           |         1 |
+|       1 | sports        | Edward P. Jones        |         1 |
+|       1 | sports        | Gary Paulsen           |         1 |
+|       1 | sports        | Douglas Adams          |         2 |
+|       2 | autobiography | Delia Sherman          |         1 |
+|       2 | chemistry     | Bryce Courtenay        |         2 |
+|       2 | chemistry     | Heidi Hayes Jacobs     |         1 |
+|       2 | chemistry     | Douglas Adams          |         1 |
+|       2 | fiction       | Heidi Baker            |         2 |
+|       2 | fiction       | Chris Malta            |         2 |
+|       2 | fiction       | John McPhee            |         1 |
+|       2 | history       | W. Frederick Zimmerman |         1 |
+|       2 | horror        | Bill Bryson            |         1 |
+|       2 | horror        | J.K. Rowling           |         1 |
+|       2 | horror        | Frank Herbert          |         1 |
+|       2 | horror        | Mark Smylie            |         2 |
+|       2 | horror        | Brian Herbert          |         1 |
+|       2 | non-fiction   | Bill Bryson            |         1 |
+|       2 | Sci-fi        | Angela Knight          |         1 |
+|       2 | Sci-fi        | Heidi Fleiss           |         1 |
+|       2 | sports        | Marsha Collier         |         1 |
+|       2 | sports        | Rob Orsini             |         1 |
+|       3 | adventure     | John McPhee            |         1 |
+|       3 | adventure     | Wendy Wasserstein      |         1 |
+|       3 | adventure     | Bill Bryson            |         1 |
+|       3 | autobiography | Frank Herbert          |         1 |
+|       3 | autobiography | Delia Sherman          |         1 |
+|       3 | chemistry     | Douglas Adams          |         1 |
+|       3 | fiction       | Chris Malta            |         1 |
+|       3 | horror        | J.K. Rowling           |         2 |
+|       3 | horror        | Leo Tolstoy            |         1 |
+|       3 | horror        | Lucas Carlson          |         1 |
+|       3 | horror        | Jude Fisher            |         1 |
+|       3 | non-fiction   | Edward P. Jones        |         1 |
+|       3 | non-fiction   | John McPhee            |         1 |
+|       3 | non-fiction   | Dave Thomas            |         1 |
+|       3 | physics       | Wendy Wasserstein      |         1 |
+|       3 | Sci-fi        | Patricia A. McKillip   |         1 |
+|       3 | sports        | John McPhee            |         1 |
+|       4 | adventure     | Leo Tolstoy            |         1 |
+|       4 | autobiography | Edward P. Jones        |         1 |
+|       4 | chemistry     | Leo Tolstoy            |         1 |
+|       4 | history       | Leo Tolstoy            |         1 |
+|       4 | horror        | Jude Fisher            |         1 |
+|       4 | horror        | John McPhee            |         1 |
+|       4 | horror        | Marsha Collier         |         1 |
+|       4 | horror        | J.K. Rowling           |         1 |
+|       4 | horror        | Lucas Carlson          |         1 |
+|       4 | horror        | Bill Bryson            |         2 |
+|       4 | non-fiction   | John McPhee            |         1 |
+|       4 | non-fiction   | Edward P. Jones        |         1 |
+|       4 | non-fiction   | Dave Lakhani           |         1 |
+|       4 | physics       | Heidi Boyd             |         1 |
+|       4 | physics       | J.K. Rowling           |         1 |
+|       4 | physics       | J.R.R. Tolkien         |         1 |
+|       4 | Sci-fi        | Angela Knight          |         1 |
+|       4 | Sci-fi        | Ruby Ann Boxcar        |         1 |
+|       4 | sports        | Ruby Ann Boxcar        |         1 |
+|       4 | sports        | Marsha Collier         |         1 |
+|       5 | adventure     | Chris   Smith          |         1 |
+|       5 | adventure     | Kate Horsley           |         1 |
+|       5 | adventure     | Bill Bryson            |         1 |
+|       5 | autobiography | Delia Sherman          |         1 |
+|       5 | fiction       | Louis E. Catron        |         1 |
+|       5 | fiction       | Leo Tolstoy            |         1 |
+|       5 | history       | Leo Tolstoy            |         1 |
+|       5 | horror        | Brian Herbert          |         1 |
+|       5 | horror        | Leo Tolstoy            |         1 |
+|       5 | horror        | Bill Bryson            |         1 |
+|       5 | horror        | J.K. Rowling           |         1 |
+|       5 | horror        | John McPhee            |         1 |
+|       5 | non-fiction   | Frank Herbert          |         1 |
+|       5 | physics       | J.K. Rowling           |         1 |
+|       5 | physics       | Heidi Boyd             |         1 |
+|       5 | Sci-fi        | Ruby Ann Boxcar        |         1 |
+|       5 | Sci-fi        | Marianne Sturman       |         1 |
+|       5 | Sci-fi        | Angela Knight          |         1 |
+|       5 | Sci-fi        | Donna Ickes            |         1 |
+|       5 | sports        | Marsha Collier         |         1 |
+|       6 | adventure     | John McPhee            |         1 |
++---------+---------------+------------------------+-----------+
+91 rows in set (0.00 sec)
+
+mysql> notee
